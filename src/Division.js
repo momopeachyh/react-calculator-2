@@ -12,25 +12,23 @@ class Division extends React.Component {
     return (
       <div className="Division">
         <form>
-          <input
-            type="number"
-            id="divide1"
-            onChange={this.calcQuotient}
-          ></input>
+          <input type="number" id="divide1"></input>
           <button className="button">÷</button>
+          <input type="number" id="divide2"></input>
           <input
-            type="number"
-            id="divide2"
-            onChange={this.calcQuotient}
+            type="submit"
+            value="="
+            className="button"
+            onClick={(event) => this.calcQuotient(event)}
           ></input>
-          <input type="submit" value="=" className="button"></input>
           <input type="text" value={this.state.quotient}></input>
         </form>
       </div>
     );
   }
 
-  calcQuotient = () => {
+  calcQuotient = (event) => {
+    event.preventDefault();
     let divide1 = document.getElementById("divide1").value;
     let divide2 = document.getElementById("divide2").value;
     let quotient = Number(divide1) / Number(divide2);

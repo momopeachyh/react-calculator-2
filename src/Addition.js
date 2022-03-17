@@ -12,17 +12,23 @@ class Addition extends React.Component {
     return (
       <div className="Addition">
         <form>
-          <input type="number" id="add1" onChange={this.calcSum}></input>
+          <input type="number" id="add1"></input>
           <button className="button">+</button>
-          <input type="number" id="add2" onChange={this.calcSum}></input>
-          <input type="submit" value="=" className="button"></input>
+          <input type="number" id="add2"></input>
+          <input
+            type="submit"
+            value="="
+            onClick={(event) => this.calcSum(event)}
+            className="button"
+          ></input>
           <input type="text" value={this.state.sum}></input>
         </form>
       </div>
     );
   }
 
-  calcSum = () => {
+  calcSum = (event) => {
+    event.preventDefault();
     let add1 = document.getElementById("add1").value;
     let add2 = document.getElementById("add2").value;
     let sum = Number(add1) + Number(add2);

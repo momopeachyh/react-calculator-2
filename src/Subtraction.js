@@ -12,25 +12,23 @@ class Subtraction extends React.Component {
     return (
       <div className="Subtraction">
         <form>
-          <input
-            type="number"
-            id="subtract1"
-            onChange={this.calcDifference}
-          ></input>
+          <input type="number" id="subtract1"></input>
           <button className="button">-</button>
+          <input type="number" id="subtract2"></input>
           <input
-            type="number"
-            id="subtract2"
-            onChange={this.calcDifference}
+            type="submit"
+            value="="
+            className="button"
+            onClick={(event) => this.calcDifference(event)}
           ></input>
-          <input type="submit" value="=" className="button"></input>
           <input type="text" value={this.state.difference}></input>
         </form>
       </div>
     );
   }
 
-  calcDifference = () => {
+  calcDifference = (event) => {
+    event.preventDefault();
     let subtract1 = document.getElementById("subtract1").value;
     let subtract2 = document.getElementById("subtract2").value;
     let difference = Number(subtract1) - Number(subtract2);
